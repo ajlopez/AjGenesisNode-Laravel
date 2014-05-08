@@ -15,10 +15,11 @@ exports['create application'] = function (test) {
         test.ok(fs.existsSync(dirname));
         
         test.ok(fs.existsSync(path.join(dirname, 'site')));
-        test.ok(fs.existsSync(path.join(dirname, 'site', 'css')));
+        test.ok(fs.existsSync(path.join(dirname, 'site', 'readme.md')));
+        test.ok(fs.existsSync(path.join(dirname, 'site', 'server.php')));
 
-        test.ok(fs.existsSync(path.join(dirname, 'ajgenesis')));
-        test.ok(fs.existsSync(path.join(dirname, 'ajgenesis', 'templates')));
+//        test.ok(fs.existsSync(path.join(dirname, 'ajgenesis')));
+//        test.ok(fs.existsSync(path.join(dirname, 'ajgenesis', 'templates')));
         
         removeDirSync(dirname);
         test.done();
