@@ -67,6 +67,12 @@ npm install
 npm test
 ```
 
+## Laravel Master
+
+The internal site was downloaded from https://github.com/laravel/laravel/archive/master.zip
+
+See http://laravel.com/docs/quick Via Composer
+
 ## Versions
 
 TBD
