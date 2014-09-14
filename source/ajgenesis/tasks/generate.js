@@ -17,6 +17,7 @@ function generate(model, args, ajgenesis, cb) {
     ajgenesis.createDirectory(controllersdir);
     ajgenesis.createDirectory(viewsdir);
     
+    ajgenesis.fileTransform(path.join(__dirname, '..', 'templates', 'routes.php.tpl'), path.join(appdir, 'routes.php'), model);
     ajgenesis.fileTransform(path.join(__dirname, '..', 'templates', 'views', 'layout.blade.php.tpl'), path.join(viewsdir, 'layout.blade.php'), model);
     
     model.entities.forEach(function (entity) {
