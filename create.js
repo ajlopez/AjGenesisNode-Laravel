@@ -6,7 +6,6 @@ var fs = require('fs');
 function runCommand(cmd, cb) {
     var exec = require('child_process').exec;
 
-    console.log('executing:', cmd);
     var child = exec(cmd);
     
     child.stdout.pipe(process.stdout);
