@@ -30,6 +30,8 @@ module.exports = function (model, args, ajgenesis, cb) {
     else
         copySource(0, null);
         
+    model = model || { };
+    
     function copySource(err, data) {
         var source = path.resolve(path.join(__dirname, 'source'));
         
@@ -39,7 +41,17 @@ module.exports = function (model, args, ajgenesis, cb) {
                 return;
             }
         
-    //        ajgenesis.fileTransform(path.join(__dirname, 'templates', 'project.json.tpl'), path.join(dirname, 'models', 'project.json'), { name: dirname });
+            var projmodel;
+
+            if (model.project)
+                projmodel = model.project;
+            else
+                model = projmodel = { project: { name: path.basename(dirname), version: '0.0.1'} };
+                
+            ajgenesis.createDirectory(ajgenesis.getModelDirectory(dirname));
+            ajgenesis.saveModel(path.join(ajgenesis.getModelDirectory(dirname), 'project.json'), projmodel);
+            
+            ajgenesis.fileTransform(path.join(__dirname, 'templates', 'package.json.tpl'), path.join(dirname, 'package.json'), model);
             
             cb(null, result);
         });
