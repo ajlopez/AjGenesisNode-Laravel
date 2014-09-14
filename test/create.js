@@ -5,7 +5,7 @@ var createtask = require('../create'),
     ajgenesis = require('ajgenesis');
 
 exports['create application'] = function (test) {
-    test.async();
+    test.async(120000);
     
     var dirname = path.join('test', 'myapp');
     
@@ -13,15 +13,11 @@ exports['create application'] = function (test) {
         test.equal(err, null);
         
         test.ok(fs.existsSync(dirname));
-        
-        test.ok(fs.existsSync(path.join(dirname, 'site')));
-        test.ok(fs.existsSync(path.join(dirname, 'site', 'readme.md')));
-        test.ok(fs.existsSync(path.join(dirname, 'site', 'server.php')));
-
-//        test.ok(fs.existsSync(path.join(dirname, 'ajgenesis')));
-//        test.ok(fs.existsSync(path.join(dirname, 'ajgenesis', 'templates')));
-        
-        removeDirSync(dirname);
+        test.ok(fs.existsSync(path.join(dirname, 'ajgenesis')));
+        test.ok(fs.existsSync(path.join(dirname, 'ajgenesis', 'libs')));
+        test.ok(fs.existsSync(path.join(dirname, 'ajgenesis', 'tasks')));
+        test.ok(fs.existsSync(path.join(dirname, 'ajgenesis', 'templates')));
+                
         test.done();
     });
 };
