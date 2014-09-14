@@ -27,8 +27,13 @@ exports['create and generate'] = function (test) {
             test.equal(err, null);
             test.equal(result, null);
             
+            var publicdir = path.join('build', 'public');
             var appdir = path.join('build', 'app');
             var modelsdir = path.join('build', 'app', 'models');
+            
+            test.ok(fs.existsSync(publicdir));
+            test.ok(fs.existsSync(path.join(publicdir, 'css')));
+            test.ok(fs.existsSync(path.join(publicdir, 'js')));
             
             test.ok(fs.existsSync(appdir));
             test.ok(fs.existsSync(path.join(appdir, 'routes.php')));

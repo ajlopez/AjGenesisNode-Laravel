@@ -9,11 +9,15 @@ function generate(model, args, ajgenesis, cb) {
     var appdir = path.join(builddir, 'app');
     var modelsdir = path.join(builddir, 'app', 'models');
     var controllersdir = path.join(builddir, 'app', 'controllers');
+    var viewsdir = path.join(builddir, 'app', 'views');
     
     ajgenesis.createDirectory(builddir);
     ajgenesis.createDirectory(appdir);
     ajgenesis.createDirectory(modelsdir);
     ajgenesis.createDirectory(controllersdir);
+    ajgenesis.createDirectory(viewsdir);
+    
+    ajgenesis.fileTransform(path.join(__dirname, '..', 'templates', 'views', 'layout.blade.php.tpl'), path.join(viewsdir, 'layout.blade.php'), model);
     
     model.entities.forEach(function (entity) {
         model.entity = entity;
