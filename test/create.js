@@ -36,6 +36,10 @@ exports['create application'] = function (test) {
         test.equal(project.project.name, 'myapp');
         test.ok(project.project.version);
                 
+        test.ok(fs.existsSync(path.join(dirname, 'node_modules')));
+        test.ok(fs.existsSync(path.join(dirname, 'node_modules', 'ajgenesisnode-model')));
+        test.ok(fs.existsSync(path.join(dirname, 'node_modules', 'ajgenesisnode-entity')));
+        
         test.done();
     });
 };

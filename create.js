@@ -53,7 +53,18 @@ module.exports = function (model, args, ajgenesis, cb) {
             
             ajgenesis.fileTransform(path.join(__dirname, 'templates', 'package.json.tpl'), path.join(dirname, 'package.json'), model);
             
-            cb(null, result);
+            var cwd = process.cwd();
+            
+            process.chdir(dirname);
+            
+            runCommand('npm install', function (err, data) {
+                process.chdir(cwd);
+                
+                if (err)
+                    cb('npm install error code: ' + err, null);
+                else
+                    cb(null, result);
+            });
         });
     }
 }
