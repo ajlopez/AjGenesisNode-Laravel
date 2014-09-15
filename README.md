@@ -9,7 +9,6 @@ Install [Node.js](http://nodejs.org).
 Install globally latests version of AjGenesis for Node, Entity and Lavarel modules:
 ```
 npm install ajgenesis -g
-npm install ajgenesisnode-entity -g
 npm install ajgenesisnode-lavarel -g
 ```
 
@@ -20,16 +19,15 @@ In any directory, create an application
 ajgenesis lavarel:create demo
 cd demo
 ```
+You must have `composer` and `npm` in your path.
 
-The AjGenesis `lavarel` module is installed automatically from `ajgenesisnode-lavarel`, if it is not already installed.
+The new directory is a Laravel application, with an additionally subdirectory:
 
-The new directory has subdirectories:
-
-- `models`: where the free model files reside.
 - `ajgenesis`: additional tasks and remplates for AjGenesis.
-- `site`: initial static files for a new web site.
 
-Add some entities and propeties:
+Add `node_modules` to the project `.gitignore` file.
+
+Now, add some entities and propeties:
 
 ```
 ajgenesis entity:add customer
@@ -40,17 +38,25 @@ ajgenesis entity:addproperty supplier name
 ajgenesis entity:addproperty supplier address
 ```
 
-The new .json files will be added to `models` director.
+The new `.json` files will be added to `ajgenesis/models` directory.
+
+You must start your database server (default is `mysql`). And you must create
+the database and tables (migration support is pending).
 
 Generate the web site:
-
 ```
 ajgenesis generate
 ```
 
 The web site is generated in a new directory `build`.
 
-Install the dependencies
+Launch the web site as a Laravel 
+```
+php artisan serve
+```
+
+Browse to `http://localhost:8000`
+
 TBD
 
 Run the site
