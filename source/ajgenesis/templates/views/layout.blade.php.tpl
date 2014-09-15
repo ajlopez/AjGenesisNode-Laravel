@@ -39,7 +39,10 @@
       </div>
       
       <div class="container">
-              @yield('content')
+        <div class="row">
+            <h1>{{{ $title }}}</h1>
+        </div>
+          @yield('content')
       </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

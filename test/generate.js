@@ -30,6 +30,7 @@ exports['create and generate'] = function (test) {
             var publicdir = path.join('build', 'public');
             var appdir = path.join('build', 'app');
             var modelsdir = path.join('build', 'app', 'models');
+            var viewsdir = path.join('build', 'app', 'views');
             
             test.ok(fs.existsSync(publicdir));
             test.ok(fs.existsSync(path.join(publicdir, 'css')));
@@ -47,6 +48,14 @@ exports['create and generate'] = function (test) {
             test.ok(fs.existsSync(controllersdir));
             test.ok(fs.existsSync(path.join(controllersdir, 'CustomerController.php')));
             test.ok(fs.existsSync(path.join(controllersdir, 'SupplierController.php')));
+
+            test.ok(fs.existsSync(viewsdir));
+            test.ok(fs.existsSync(path.join(viewsdir, 'layout.blade.php')));
+            test.ok(fs.existsSync(path.join(viewsdir, 'index.blade.php')));
+            test.ok(fs.existsSync(path.join(viewsdir, 'customer', 'list.blade.php')));
+            test.ok(fs.existsSync(path.join(viewsdir, 'customer', 'view.blade.php')));
+            test.ok(fs.existsSync(path.join(viewsdir, 'supplier', 'list.blade.php')));
+            test.ok(fs.existsSync(path.join(viewsdir, 'supplier', 'view.blade.php')));
             
             process.chdir(cwd);
             
